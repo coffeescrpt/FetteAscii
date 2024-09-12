@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilify</title>
+    <style>
+        @font-face {
+            font-family: 'FetteUnzFraktur';
+            src: url('/resources/font.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0D1117;
+            color: white;
+        }
+
+        .input-container {
+            position: absolute;
+            top: 13%;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .input-container input {
+            font-size: 24px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1f2937;
+            color: white;
+            outline: none;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 80px;
+            font-weight: normal;
+            letter-spacing: 0.2em;
+            font-family: 'FetteUnzFraktur', serif;
+            margin-top: 100px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .image-container {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            width: 126px;
+            height: 126px;
+            overflow: hidden;
+            border-radius: 50%;
+            transition: filter 0.6s ease-in-out;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .image-container:hover img {
+            filter: brightness(50%);
+        }
+
+        .image-container:hover .glowy-text {
+            opacity: 1;
+        }
+
+        .glowy-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'FetteUnzFraktur', serif;
+            font-size: 18px;
+            color: #ffffff;
+            text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            pointer-events: none;
+        }
+
+        .image-container a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="input-container">
+        <input type="text" id="h1-input" placeholder="Edit H1 content here">
+    </div>
+
+    <h1 id="header">OpenDisease</h1>
+
+    <div class="footer">
+        <a href="ascify.html">Ascify</a>
+    </div>
+
+    <div class="image-container">
+        <a href="https://github.com/opendisease/FetteAscii" target="_blank"></a>
+        <img src="/resources/opendisease.jpg" alt="Rounded Image">
+        <div class="glowy-text">OpenDisease</div>
+    </div>
+
+    <script>
+        const h1 = document.getElementById('header');
+        const inputField = document.getElementById('h1-input');
+        function updateH1Content(text) {
+            h1.innerText = text;
+        }
+        inputField.value = h1.innerText;
+        inputField.addEventListener('input', function() {
+            updateH1Content(inputField.value);
+        });
+    </script>
+</body>
+</html>
